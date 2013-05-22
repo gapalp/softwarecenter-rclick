@@ -1,0 +1,42 @@
+#!/usr/bin/python
+import os
+#import pygtk
+import gtk
+import subprocess
+
+#a dialog box for messages
+def alert(msg):
+	dialog = gtk.MessageDialog()
+	dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_INFO, gtk.BUTTONS_OK, "")
+	dialog.set_markup(msg)
+	dialog.run()
+
+#the main function
+def main():
+	#get the users home dir	
+	home = os.environ.get('HOME', '')	
+	#get the selected desktop icon	
+	selected = os.environ.get('NAUTILUS_SCRIPT_SELECTED_URIS', '')
+
+	#parse the selected string down to the application name
+	#it will always be in the same format
+	selected = selected.replace(home, '')
+	selected = selected.replace('file:///Desktop/', '')
+	selected = selected.replace('.desktop', '')
+	selected = selected.lower();
+	
+	#open the software-center passing the selected application	
+	#alert("software-center " + selected);
+	try:	
+		f = open(home + "/softwarecenter-rclick.log", "w")		
+		#os.system("software-center " + selected)			
+		#subprocess.call('software-center ' + selected, shell=True, stdout=f)
+		subprocess.Popen('software-center ' + selected, shell=True, stderr=f)
+	except IOError as e:
+		alert("SC: IOError: " + e.strerror)	
+	except:
+		alert("SC: Unable to process application name.")
+
+#call the main function
+if __name__ == "__main__":
+    main()
