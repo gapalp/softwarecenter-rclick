@@ -1,0 +1,11 @@
+To install:
+1. Unzip softwarecenter-rclick.tar.gz.
+2. Install using this command in a terminal from the location you unzipped the program: 
+sh softwarecenter-rclick-install.sh
+3. Alternatively, right-click on the file softwarecenter-rclick-install.sh in a file manager. Choose Run in Terminal or Run.
+4. Invoke the program by right-clicking on an application desktop icon that is in the Software Center, choose Scripts, then click Open Software Center. 
+
+
+After choosing Open Software Center, the Software Center will open with the chosen application. From there you can rate/review the application, add modules, or remove the application. Choosing a file or an icon where the application is not in the Software Center will result in the Software Center not finding a result.
+
+The log file is located at: $HOME\softwarecenter-rclick.log. Reference the log if the Software Center does not open for an application that is in the Software Center. The log will show any error details produced by the Software Center.
